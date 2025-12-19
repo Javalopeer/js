@@ -413,4 +413,4 @@ for (let i = 0; i < jonas.length; i++) {
     console.log(types[i] = typeof jonas[i]);
 }
 
-//
+// Hola 
