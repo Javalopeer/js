@@ -91,7 +91,7 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 
 console.log(yearsUntilRetirement(1999, 'Gerardo')); */
 
-/* 
+/*
 Back to the two gymnastics teams, the Dolphins and the Koalas! There is a new gymnastics discipline, which works differently.
 
 Each team competes 3 times, and then the average of the 3 scores is calculated (so one average score per team).
@@ -345,7 +345,7 @@ console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his bes
 
 console.log(jonas.getSummary()); */
 
-/* 
+/*
 
 CHALLENGE #3
 Let's go back to Mark and John comparing their BMIs!
@@ -396,7 +396,7 @@ console.log(response); */
 //     console.log(`Lifting weight at repetition ${rep}`);
 // }
 
-const jonas = [
+/* const jonas = [
     'Jonas',
     'Schmedtmann',
     2025 - 1999,
@@ -408,9 +408,62 @@ const jonas = [
 const types = [];
 
 for (let i = 0; i < jonas.length; i++) {
+    // Reading from Jonas array
     console.log(jonas[i], typeof jonas[i]);
 
-    console.log(types[i] = typeof jonas[i]);
+    // Filling types array
+    // types[i] = typeof jonas[i];
+
+    types.push(typeof jonas[i])
+
+
 }
 
-// Hola 
+console.log(types);
+
+
+const years = [1991, 2007, 1969, 2020];
+const age = [];
+
+for (let x = 0; x < years.length; x++) {
+    age[x] = 2025 - years[x];
+    console.log(`The current age for the whom born at ${years[x]} is ${age[x]}.`);
+} */
+
+
+/* const grades = [95, 72, 68, 88, 40, 100];
+const results = [];
+
+for (let index = 0; index < grades.length; index++) {
+    results[index] =
+        (grades[index] >= 90)
+            ? `${grades[index]} - Excellent`
+            : (grades[index] >= 70 && grades[index] < 90) ?
+                `${grades[index]} - Passed` :
+                `${grades[index]} - Failed`;
+
+    console.log(results[index]);
+} */
+
+
+/* const people = [
+    { name: 'Ana', birthYear: 1998, hasDriversLicense: true },
+    { name: 'Luis', birthYear: 2005, hasDriversLicense: false },
+    { name: 'Maria', birthYear: 1985, hasDriversLicense: true },
+    { name: 'Carlos', birthYear: 2010, hasDriversLicense: false }
+];
+
+
+const calcAge = (birthYear) => {
+    return 2025 - birthYear;
+}
+
+const getSummary = (nombre, edad, licencia) => {
+    const posee = licencia === true ? `has a driver's license.` : `hasn't a driver's license.`
+    return `${nombre} is a ${edad}-year-old, and ${posee}`
+}
+
+for (let i = 0; i < people.length; i++) {
+    const resume = getSummary(people[i].name, calcAge(people[i].birthYear), people[i].hasDriversLicense);
+    console.log(resume);
+} */
