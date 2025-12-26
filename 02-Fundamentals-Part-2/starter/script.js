@@ -467,3 +467,25 @@ for (let i = 0; i < people.length; i++) {
     const resume = getSummary(people[i].name, calcAge(people[i].birthYear), people[i].hasDriversLicense);
     console.log(resume);
 } */
+
+
+/* const jonas = [
+    'Jonas',
+    'Schmedtmann',
+    2025 - 1999,
+    'teacher',
+    ['Michael', 'Peter', 'Steven']
+];
+
+for (let i = jonas.length - 1; i >= 0; i--) {
+    console.log(`${i + 1} - ${jonas[i]}`);
+}
+
+for (let exercise = 1; exercise <= 3; exercise++) {
+    console.log(`---- Starting exercise:  ${exercise}`);
+    for (let rep = 1; rep <= 5; rep++) {
+        console.log(`Exercise ${exercise}: - Rep #${rep}`);
+    }
+}
+
+ */
