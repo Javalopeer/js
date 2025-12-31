@@ -35,7 +35,7 @@ Si es menor -> No es elegible.
 
 */
 
-const employees = [
+/* const employees = [
     { name: "Ana", age: 28, experience: 3, certified: true },
     { name: "Luis", age: 22, experience: 1, certified: false },
     { name: "María", age: 35, experience: 10, certified: true },
@@ -98,3 +98,86 @@ for (let i = 0; i < employees.length; i++) {
 
 console.log(`El empleado con mayor puntaje es ${bestEmployee} con ${maxScore} puntos.`);
 console.log(`Hay ${elegible} empleados elegibles para la promocion.`);
+ */
+
+
+
+const employees = [
+    { name: "Ana", age: 28, experience: 3, certified: true, warnings: 0 },
+    { name: "Luis", age: 22, experience: 1, certified: false, warnings: 1 },
+    { name: "María", age: 35, experience: 10, certified: true, warnings: 0 },
+    { name: "Carlos", age: 19, experience: 0, certified: false, warnings: 3 },
+    { name: "Sofía", age: 30, experience: 5, certified: false, warnings: 2 }
+];
+
+
+/* Challenge mas dificil que el previo */
+
+
+const timeExperience = year => year > 0 ? year * 2 : 0;
+const warningPointDecreaser = warning => warning > 0 ? (warning * 5) * -1 : 0
+
+let bestEmployeeName = '';
+let bestEmployeeScore = 0;
+
+let worstEmployeeName = '';
+let worstEmployeeScore = Infinity;
+
+let amountBonifEmployees = 0;
+let amountRiskEmployees = 0;
+
+for (let i = 0; i < employees.length; i++) {
+    const emp = employees[i];
+    let score = 0;
+
+    if (emp.age >= 25) {
+        score += 10;
+    }
+
+    if (emp.experience > 0) {
+        score += timeExperience(emp.experience);
+    }
+
+    if (emp.certified) {
+        score += 15;
+    }
+
+    if (emp.warnings > 0) {
+        score += warningPointDecreaser(emp.warnings);
+    }
+
+    const bonification = score >= 30 && emp.warnings <= 1
+        ? `SI`
+        : `NO`;
+
+    const risk = score < 10 || emp.warnings >= 3
+        ? `SI`
+        : `NO`;
+
+
+    if (score > bestEmployeeScore) {
+        bestEmployeeScore = score;
+        bestEmployeeName = emp.name;
+    }
+
+    if (score < worstEmployeeScore) {
+        worstEmployeeName = emp.name;
+        worstEmployeeScore = score;
+    }
+
+    if (bonification === `SI`) {
+        amountBonifEmployees++;
+    }
+
+    if (risk === `SI`) {
+        amountRiskEmployees++;
+    }
+
+    console.log(`${emp.name} -> Puntaje: ${score} | Bonificacion: ${bonification} | Riesgo: ${risk}`);
+
+}
+
+console.log(`Mayor puntaje: ${bestEmployeeName} (${bestEmployeeScore})`);
+console.log(`Menos puntaje: ${worstEmployeeName} (${worstEmployeeScore})`);
+console.log(`Cantidad total de empleados con bonificacion: ${amountBonifEmployees}`);
+console.log(`Cantidad total de empleados en riesgo: ${amountRiskEmployees}`);
