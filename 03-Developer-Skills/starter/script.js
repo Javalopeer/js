@@ -102,19 +102,19 @@ console.log(`Hay ${elegible} empleados elegibles para la promocion.`);
 
 
 
-const employees = [
+/* const employees = [
     { name: "Ana", age: 28, experience: 3, certified: true, warnings: 0 },
     { name: "Luis", age: 22, experience: 1, certified: false, warnings: 1 },
     { name: "María", age: 35, experience: 10, certified: true, warnings: 0 },
     { name: "Carlos", age: 19, experience: 0, certified: false, warnings: 3 },
     { name: "Sofía", age: 30, experience: 5, certified: false, warnings: 2 }
-];
+]; */
 
 
 /* Challenge mas dificil que el previo */
 
 
-const timeExperience = year => year > 0 ? year * 2 : 0;
+/* const timeExperience = year => year > 0 ? year * 2 : 0;
 const warningPointDecreaser = warning => warning > 0 ? (warning * 5) * -1 : 0
 
 let bestEmployeeName = '';
@@ -180,4 +180,75 @@ for (let i = 0; i < employees.length; i++) {
 console.log(`Mayor puntaje: ${bestEmployeeName} (${bestEmployeeScore})`);
 console.log(`Menos puntaje: ${worstEmployeeName} (${worstEmployeeScore})`);
 console.log(`Cantidad total de empleados con bonificacion: ${amountBonifEmployees}`);
-console.log(`Cantidad total de empleados en riesgo: ${amountRiskEmployees}`);
+console.log(`Cantidad total de empleados en riesgo: ${amountRiskEmployees}`); */
+
+let totalApproves = 0;
+let totalRejects = 0;
+let maxScore = 0;
+let lessScore = Infinity;
+
+let maxScoreDelivery = '';
+let lessScoreDelivery = '';
+
+const orders = [
+    { id: 1, customer: "Ana", amount: 120, status: "PAID", fraud: false },
+    { id: 2, customer: "Luis", amount: 80, status: "PENDING", fraud: false },
+    { id: 3, customer: "María", amount: 300, status: "PAID", fraud: true },
+    { id: 4, customer: "Carlos", amount: 50, status: "CANCELLED", fraud: false },
+    { id: 5, customer: "Sofía", amount: 200, status: "PAID", fraud: false },
+    { id: 6, customer: "Mario", amount: 500, status: "PAID", fraud: true },
+];
+
+
+for (let i = 0; i < orders.length; i++) {
+    const order = orders[i];
+    let score = 0;
+
+
+    if (order.amount > 100) {
+        score += 10;
+    }
+
+    if (order.status === "PAID") {
+        score += 20;
+    }
+
+    if (order.status === "CANCELLED") {
+        score = 0;
+    }
+
+    if (order.fraud) {
+        score -= 50;
+    }
+
+    const approve = score >= 20 && order.fraud != true
+        ? `APROBADO`
+        : score < 20 || order.fraud
+            ? `RECHAZADO` : `RECHAZADO`;
+
+    if (approve === `APROBADO`) {
+        totalApproves++;
+    }
+
+    if (approve === `RECHAZADO`) {
+        totalRejects++;
+    }
+
+    if (maxScore < score) {
+        maxScore = score;
+        maxScoreDelivery = `Pedido ${order.id} (${score}.)`
+    }
+
+    if (lessScore > score) {
+        lessScore = score;
+        lessScoreDelivery = `Pedido ${order.id} (${score}.)`
+    }
+
+    console.log(`Pedido ${order.id} (${order.customer}) => Score: ${score} | Estado: ${approve} `);
+
+}
+
+console.log(`Total aprobados: ${totalApproves}`);
+console.log(`Total rechazados: ${totalRejects}`);
+console.log(`Mayor score: ${maxScoreDelivery}`);
+console.log(`Menor score: ${lessScoreDelivery}`);
