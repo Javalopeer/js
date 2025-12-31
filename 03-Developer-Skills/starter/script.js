@@ -63,20 +63,38 @@ const calcScorePerEmployee = (age, experience, certified) => {
         score += scoreDueExperience(experience);
     }
 
-    if (certified === true)
+    if (certified) {
         score += 15;
+    }
 
     return score;
 }
+
+let maxScore = 0;
+let bestEmployee = '';
+let elegible = 0;
 
 for (let i = 0; i < employees.length; i++) {
     const emp = employees[i];
     const finalScore = calcScorePerEmployee(emp.age, emp.experience, emp.certified)
 
-    const elegilibility = finalScore >= 25
+    const elegibility = finalScore >= 25
         ? 'es elegible para la promocion.'
         : 'no es elegible.';
 
-    console.log(`${emp.name} tiene un puntaje de ${finalScore} y ${elegilibility}`);
+    console.log(`${emp.name} tiene un puntaje de ${finalScore} y ${elegibility}`);
+
+    if (finalScore > maxScore) {
+        maxScore = finalScore;
+        bestEmployee = emp.name;
+    }
+
+    if (finalScore >= 25) {
+        elegible++;
+    }
+
 
 }
+
+console.log(`El empleado con mayor puntaje es ${bestEmployee} con ${maxScore} puntos.`);
+console.log(`Hay ${elegible} empleados elegibles para la promocion.`);
