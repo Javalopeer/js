@@ -69,4 +69,14 @@ const calcScorePerEmployee = (age, experience, certified) => {
     return score;
 }
 
-console.log(calcScorePerEmployee(25, 1, true));
+for (let i = 0; i < employees.length; i++) {
+    const emp = employees[i];
+    const finalScore = calcScorePerEmployee(emp.age, emp.experience, emp.certified)
+
+    const elegilibility = finalScore >= 25
+        ? 'es elegible para la promocion.'
+        : 'no es elegible.';
+
+    console.log(`${emp.name} tiene un puntaje de ${finalScore} y ${elegilibility}`);
+
+}
