@@ -526,7 +526,6 @@ const calcAverage = (arr) => {
         sum = sum + arr[x];
     }
     return sum / arr.length;
-
 }
 
 console.log('The average is ' + calcAverage(totals));
