@@ -182,7 +182,7 @@ console.log(`Menos puntaje: ${worstEmployeeName} (${worstEmployeeScore})`);
 console.log(`Cantidad total de empleados con bonificacion: ${amountBonifEmployees}`);
 console.log(`Cantidad total de empleados en riesgo: ${amountRiskEmployees}`); */
 
-let totalApproves = 0;
+/* let totalApproves = 0;
 let totalRejects = 0;
 let maxScore = 0;
 let lessScore = Infinity;
@@ -251,4 +251,5 @@ for (let i = 0; i < orders.length; i++) {
 console.log(`Total aprobados: ${totalApproves}`);
 console.log(`Total rechazados: ${totalRejects}`);
 console.log(`Mayor score: ${maxScoreDelivery}`);
-console.log(`Menor score: ${lessScoreDelivery}`);
+console.log(`Menor score: ${lessScoreDelivery}`); */
+
