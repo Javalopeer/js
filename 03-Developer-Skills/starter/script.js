@@ -253,3 +253,18 @@ console.log(`Total rechazados: ${totalRejects}`);
 console.log(`Mayor score: ${maxScoreDelivery}`);
 console.log(`Menor score: ${lessScoreDelivery}`); */
 
+const measureKelvin = function () {
+    const measurement = {
+        type: 'tem',
+        unit: 'celsius',
+        value: Number(prompt('Degrees celsius:'))
+    }
+
+    console.log(measurement);
+
+    console.log(measurement.value);
+    const kelvin = measurement.value + 273;
+    return kelvin;
+}
+// A) Identify the bug
+console.log(measureKelvin());
