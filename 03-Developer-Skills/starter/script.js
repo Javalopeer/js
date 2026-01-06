@@ -253,7 +253,7 @@ console.log(`Total rechazados: ${totalRejects}`);
 console.log(`Mayor score: ${maxScoreDelivery}`);
 console.log(`Menor score: ${lessScoreDelivery}`); */
 
-const measureKelvin = function () {
+/* const measureKelvin = function () {
     const measurement = {
         type: 'tem',
         unit: 'celsius',
@@ -267,4 +267,19 @@ const measureKelvin = function () {
     return kelvin;
 }
 // A) Identify the bug
-console.log(measureKelvin());
+console.log(measureKelvin()); */
+
+const data1 = [17, 21, 23];
+const data2 = [12, 5, -5, 0, 4];
+
+console.log(`...${data1[0]}~C ... ${data1[1]}~C ... ${data1[2]}~C ...`);
+
+const printForecast = arr => {
+    let str = '';
+    for (let i = 0; i < arr.length; i++) {
+        str = str + `${arr[i]}~C...`;
+    }
+    console.log(str);
+}
+
+printForecast(data1)
