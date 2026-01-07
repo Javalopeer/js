@@ -27,8 +27,10 @@ document.querySelector('.check')
 const secretNumber =
     Math.trunc(Math.random() * 20) + 1;
 
-const numberToGuess =
-    document.querySelector('.number').textContent = secretNumber;
+const number =
+    document.querySelector('.number');
+
+
 
 let score = 20;
 
@@ -38,11 +40,14 @@ const button = document.querySelector('.check')
         const adivinar = Number(document.querySelector('.guess').value);
         const message = document.querySelector('.message');
         const scoreInput = document.querySelector('.score');
+        const body = document.querySelector('body');
 
         if (!adivinar) {
             message.textContent = 'NO NUMBER!';
         } else if (adivinar === secretNumber) {
             message.textContent = `THAT'S CORRECT!`;
+            body.style.backgroundColor = '#60b347';
+            number.textContent = secretNumber;
         } else if (adivinar < secretNumber) {
             if (score > 1) {
                 message.textContent = `The number to guess is higher!`;
@@ -51,6 +56,7 @@ const button = document.querySelector('.check')
             } else {
                 message.textContent = 'You lose the game.!';
                 scoreInput.textContent = 0;
+                body.style.backgroundColor = '#800001';
             }
         } else if (adivinar > secretNumber) {
             if (score > 1) {
@@ -60,6 +66,7 @@ const button = document.querySelector('.check')
             } else {
                 message.textContent = 'You lose the game.!';
                 scoreInput.textContent = 0;
+                body.style.backgroundColor = '#800001';
             }
         }
 
