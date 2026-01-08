@@ -55,27 +55,26 @@ const handleWrongGuess = (text) => {
 }
 
 
-document.querySelector('.check')
-    .addEventListener('click', () => {
-        const playerGuess = Number((guess).value)
+document.querySelector('.check').addEventListener('click', () => {
+    const playerGuess = Number((guess).value)
 
-        if (!playerGuess) {
-            message.textContent = 'NO NUMBER!';
-            body.style.backgroundColor = '#222'
-            return;
-        }
+    if (!playerGuess) {
+        message.textContent = 'NO NUMBER!';
+        body.style.backgroundColor = '#222'
+        return;
+    }
 
-        if (playerGuess === secretNumber) {
-            message.textContent = `THAT'S CORRECT!`;
-            body.style.backgroundColor = '#60b347';
-            number.textContent = secretNumber;
-        } else if (playerGuess < secretNumber) {
-            handleWrongGuess('The number to guess is higher!')
-        } else {
-            handleWrongGuess('The number to guess is lower!')
-        }
+    if (playerGuess === secretNumber) {
+        message.textContent = `THAT'S CORRECT!`;
+        body.style.backgroundColor = '#60b347';
+        number.textContent = secretNumber;
+    } else if (playerGuess < secretNumber) {
+        handleWrongGuess('The number to guess is higher!')
+    } else {
+        handleWrongGuess('The number to guess is lower!')
+    }
 
-    });
+});
 
 const reset = document.querySelector('.again')
     .addEventListener('click', () => {
