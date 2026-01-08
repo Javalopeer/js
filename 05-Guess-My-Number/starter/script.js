@@ -36,13 +36,8 @@ const message = document.querySelector('.message');
 const body = document.querySelector('body');
 const guess = document.querySelector('.guess')
 
-
-
-
 let score = 20;
 let highscore = 0;
-
-
 
 const loseGame = () => {
     message.textContent = 'You lose the game.!';
