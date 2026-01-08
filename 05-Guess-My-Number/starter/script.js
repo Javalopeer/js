@@ -30,13 +30,19 @@ let secretNumber =
 const number =
     document.querySelector('.number');
 
+const highscoreInput = document.querySelector('.highscore');
 const scoreInput = document.querySelector('.score');
 const message = document.querySelector('.message');
 const body = document.querySelector('body');
 const guess = document.querySelector('.guess')
 
 
+
+
 let score = 20;
+let highscore = 0;
+
+
 
 const loseGame = () => {
     message.textContent = 'You lose the game.!';
@@ -58,7 +64,7 @@ const handleWrongGuess = (text) => {
 document.querySelector('.check').addEventListener('click', () => {
     const playerGuess = Number((guess).value)
 
-    if (!playerGuess) {
+    if (!guess.value) {
         message.textContent = 'NO NUMBER!';
         body.style.backgroundColor = '#222'
         return;
@@ -68,11 +74,19 @@ document.querySelector('.check').addEventListener('click', () => {
         message.textContent = `THAT'S CORRECT!`;
         body.style.backgroundColor = '#60b347';
         number.textContent = secretNumber;
+
+        if (score > highscore) {
+            highscoreInput.textContent = score;
+            highscore = score;
+        }
+
     } else if (playerGuess < secretNumber) {
         handleWrongGuess('The number to guess is higher!')
     } else {
         handleWrongGuess('The number to guess is lower!')
     }
+
+
 
 });
 
