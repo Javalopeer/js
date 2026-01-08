@@ -55,7 +55,7 @@ const handleWrongGuess = (text) => {
 }
 
 
-const button = document.querySelector('.check')
+document.querySelector('.check')
     .addEventListener('click', () => {
         const playerGuess = Number((guess).value)
 
@@ -80,7 +80,7 @@ const button = document.querySelector('.check')
 const reset = document.querySelector('.again')
     .addEventListener('click', () => {
         score = 20
-        scoreInput = score;
+        scoreInput.textContent = score;
 
         message.textContent = 'Start guessing...';
         number.textContent = '?';
