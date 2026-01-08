@@ -24,23 +24,23 @@ document.querySelector('.check')
         document.querySelector('.number').textContent = guess;
     }); */
 
-const secretNumber =
+let secretNumber =
     Math.trunc(Math.random() * 20) + 1;
 
 const number =
     document.querySelector('.number');
 
+const scoreInput = document.querySelector('.score');
+const message = document.querySelector('.message');
+const body = document.querySelector('body');
+const guess = document.querySelector('.guess')
 
 
 let score = 20;
 
-
 const button = document.querySelector('.check')
     .addEventListener('click', () => {
-        const adivinar = Number(document.querySelector('.guess').value);
-        const message = document.querySelector('.message');
-        const scoreInput = document.querySelector('.score');
-        const body = document.querySelector('body');
+        const adivinar = Number((guess).value)
 
         if (!adivinar) {
             message.textContent = 'NO NUMBER!';
@@ -71,3 +71,15 @@ const button = document.querySelector('.check')
         }
 
     });
+
+const reset = document.querySelector('.again')
+    .addEventListener('click', () => {
+        const resetScore = scoreInput.textContent = 20;
+        score = resetScore;
+        body.style.backgroundColor = '#222'
+        message.textContent = 'Start guessing...';
+        number.textContent = '?';
+        guess.value = '';
+        secretNumber =
+            Math.trunc(Math.random() * 20) + 1;
+    })
