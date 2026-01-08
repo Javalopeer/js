@@ -38,48 +38,54 @@ const guess = document.querySelector('.guess')
 
 let score = 20;
 
+const loseGame = () => {
+    message.textContent = 'You lose the game.!';
+    scoreInput.textContent = 0;
+    body.style.backgroundColor = '#800001';
+}
+
+const handleWrongGuess = (text) => {
+    if (score > 1) {
+        message.textContent = `${text}`;
+        score--;
+        scoreInput.textContent = score;
+    } else {
+        loseGame();
+    }
+}
+
+
 const button = document.querySelector('.check')
     .addEventListener('click', () => {
-        const adivinar = Number((guess).value)
+        const playerGuess = Number((guess).value)
 
-        if (!adivinar) {
+        if (!playerGuess) {
             message.textContent = 'NO NUMBER!';
-        } else if (adivinar === secretNumber) {
+            body.style.backgroundColor = '#222'
+            return;
+        }
+
+        if (playerGuess === secretNumber) {
             message.textContent = `THAT'S CORRECT!`;
             body.style.backgroundColor = '#60b347';
             number.textContent = secretNumber;
-        } else if (adivinar < secretNumber) {
-            if (score > 1) {
-                message.textContent = `The number to guess is higher!`;
-                score--;
-                scoreInput.textContent = score;
-            } else {
-                message.textContent = 'You lose the game.!';
-                scoreInput.textContent = 0;
-                body.style.backgroundColor = '#800001';
-            }
-        } else if (adivinar > secretNumber) {
-            if (score > 1) {
-                message.textContent = 'The number to guess is lower!';
-                score--;
-                scoreInput.textContent = score;
-            } else {
-                message.textContent = 'You lose the game.!';
-                scoreInput.textContent = 0;
-                body.style.backgroundColor = '#800001';
-            }
+        } else if (playerGuess < secretNumber) {
+            handleWrongGuess('The number to guess is higher!')
+        } else {
+            handleWrongGuess('The number to guess is lower!')
         }
 
     });
 
 const reset = document.querySelector('.again')
     .addEventListener('click', () => {
-        const resetScore = scoreInput.textContent = 20;
-        score = resetScore;
-        body.style.backgroundColor = '#222'
+        score = 20
+        scoreInput = score;
+
         message.textContent = 'Start guessing...';
         number.textContent = '?';
         guess.value = '';
+        body.style.backgroundColor = '#222'
         secretNumber =
             Math.trunc(Math.random() * 20) + 1;
     })
