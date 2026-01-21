@@ -2,6 +2,11 @@ const title = document.getElementById('titulo');
 const firstParagraph = document.querySelector('.texto');
 const allParagraph = document.querySelectorAll('.texto');
 const btnClick = document.getElementById('btn');
+const btnGreet = document.getElementById('saludar');
+const formContent = document.getElementById('resultado');
+const inputType = document.getElementById('nombre');
+
+
 
 console.log(title, firstParagraph, allParagraph);
 
@@ -42,3 +47,25 @@ const createParagraph = () => {
     document.body.appendChild(element);
     element.classList.add('disable', 'styles')
 }
+
+
+
+const list = document.createElement('ul');
+document.body.appendChild(list);
+
+const createListItem = (text) => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    return li;
+}
+
+btnGreet.addEventListener('click', () => {
+    const data = inputType.value.trim();
+    if (!data) {
+        return;
+    }
+    const li = createListItem(data);
+    list.appendChild(li);
+
+    formContent.textContent = 'Elemento agregado correctamente';
+})
