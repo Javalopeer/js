@@ -13,6 +13,12 @@
   cursor: pointer;
 }
 
+#btn.enable:hover {
+  background-color: hsl(160, 100%, 50%);
+  color: black;
+  box-shadow: 0px 0px 10px rgb(0, 255, 115);
+}
+
 .enable {
   background-color: hsl(204, 100%, 50%);
   color: white;

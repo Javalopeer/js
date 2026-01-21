@@ -17,28 +17,28 @@ firstParagraph.classList.add('marked');
 allParagraph[allParagraph.length - 1].classList.toggle('marked')
 
 
-btnClick.classList.toggle('enable')
+btnClick.classList.add('enable')
 
-
-btnClick.addEventListener('mouseenter', (event) => {
-    event.currentTarget.classList.replace('enable', 'disable')
-});
-btnClick.addEventListener('mouseleave', (event) => {
-    event.currentTarget.classList.replace('disable', 'enable')
-});
 
 btnClick.addEventListener('click', () => {
-    btnClick.textContent = 'Changed'
-    if (btnClick.classList.contains('disable')) {
-        btnClick.classList.replace('disable', 'enable')
-    } else {
-        btnClick.classList.replace('enable', 'disable')
-    }
-
-    const newElement = document.createElement('p');
-    newElement.textContent = 'Nuevo Elemento creado';
-    document.body.appendChild(newElement);
-    newElement.classList.add('disable', 'styles')
+    btnClick.textContent =
+        btnClick.classList.contains('disable') ? 'Enable' : 'Disable';
+    btnToggle();
+    createParagraph();
 });
 
+const btnToggle = () => {
 
+    const isDisabled = btnClick.classList.contains('disable');
+
+    btnClick.classList.toggle('enable', isDisabled);
+    btnClick.classList.toggle('disable', !isDisabled);
+
+}
+
+const createParagraph = () => {
+    const element = document.createElement('p');
+    element.textContent = 'Nuevo Elemento creado';
+    document.body.appendChild(element);
+    element.classList.add('disable', 'styles')
+}
