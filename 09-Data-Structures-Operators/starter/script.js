@@ -51,13 +51,13 @@ const restaurant = {
 // },
 // };
 
-const arr = [2, 3, 4];
-const a = arr[0];
-const b = arr[1];
-const c = arr[2];
+// const arr = [2, 3, 4];
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[2];
 
-const [x, y, z] = arr;
-console.log(x, y, z);
+// const [x, y, z] = arr;
+// console.log(x, y, z);
 
 // function getCoordinates() {
 //   return [9.93, -84.08];;
@@ -67,21 +67,71 @@ console.log(x, y, z);
 
 // console.log(lat, lng);
 
-console.log(arr);
+// console.log(arr);
 
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+// let [main, , secondary] = restaurant.categories;
+// console.log(main, secondary);
 
-[secondary, main] = [main, secondary];
-console.log(main, secondary);
+// [secondary, main] = [main, secondary];
+// console.log(main, secondary);
 
-const array = (assignment) => console.log(...assignment);
-const numbers = [1, 2, 3];
-array(numbers);
+// const array = (assignment) => console.log(...assignment);
+// const numbers = [1, 2, 3];
+// array(numbers);
 
-const complete = [...numbers, 4, 5];
-console.log(...complete);
+// const complete = [...numbers, 4, 5];
+// console.log(...complete);
 
 
-const [starter, mainCourse] = (restaurant.order(2, 0));
-console.log(`${starter} and ${mainCourse}`);
+// const [starter, mainCourse] = (restaurant.order(2, 0));
+// console.log(`${starter} and ${mainCourse}`);
+
+
+// const nested = [2, 4, [5, 6]];
+// // const [i, , g] = nested;
+// // console.log(i, g);
+
+// const [i, , [g, f]] = nested;
+// console.log(i, g, f);
+
+
+// const [p, k, r] = [8, 9];
+// console.log(p, k, r);
+
+// Preguntas:
+
+// const numbers = [10, 20];
+// const [a, b] = numbers;
+// console.log(a, b);
+
+const colors = ['red', 'green', 'blue'];
+const [, c] = colors;
+console.log(c);
+
+const data = [5];
+const [x, y = 0] = data;
+console.log(x, y);
+
+console.log('--SWAP--');
+let a = 3;
+let b = 7;
+console.log(a, b);
+[a, b] = [b, a];
+console.log(a, b);
+
+console.log('-------------------------');
+
+function getMinMax(arr) {
+  return [Math.min(...arr), Math.max(...arr)];
+}
+
+const [min, max] = getMinMax([6, 8, 12, 25, 1]);
+console.log(min, max);
+
+console.log('-------------------------');
+const points = [[1, 2], [3, 4], [5, 6]];
+
+for (let i = 0; i < points.length; i++) {
+  const [a, b] = points[i];
+  console.log(a, b);
+}
