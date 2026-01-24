@@ -30,26 +30,67 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex],
     this.mainMenu[mainIndex]]
-  }
-}
-// openingHours: {
-//   thu: {
-//     open: 12,
-//       close: 22,
-//     },
-//   fri: {
-//     open: 11,
-//       close: 23,
-//     },
-//   sat: {
-//     open: 0, // Open 24 hours
-//       close: 24,
-//     },
-// },
-// };
+  },
+
+  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
+
+
+};
+
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+``
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const { name: restaurantName, openingHours: hours, categories: tags } = restaurant;
+
+console.log(restaurantName, hours, tags);
+
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+
+console.log(menu, starters);
+
+// Mutating variables
+
+let a = 111;
+let b = 999;
+
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested objects
+
+const { fri: { open: o, close: c } } = openingHours
+console.log(o, c);
+
 
 // const arr = [2, 3, 4];
 // const a = arr[0];
@@ -321,43 +362,50 @@ const books = [
   }
 ];
 
-// Destructure the books array into two variables called firstBook and secondBook.
+// // Destructure the books array into two variables called firstBook and secondBook.
 
-const [firstBook, secondBook] = books;
-console.log(firstBook, secondBook);
+// const [firstBook, secondBook] = books;
+// console.log(firstBook, secondBook);
 
-// Destructure the books array into a variable called thirdBook. You must skip the first two books.
+// // Destructure the books array into a variable called thirdBook. You must skip the first two books.
 
-const [, , thirdBook] = books;
-console.log(thirdBook);
+// const [, , thirdBook] = books;
+// console.log(thirdBook);
 
-//Below is the nested ratings array that contains two other arrays. Destructure the nested ratings arrays into two variables called rating and ratingsCount. In the result of your destructuring, the ratings variable should store a number 4.19, and the ratingsCount variable should store a number 144584.
+// //Below is the nested ratings array that contains two other arrays. Destructure the nested ratings arrays into two variables called rating and ratingsCount. In the result of your destructuring, the ratings variable should store a number 4.19, and the ratingsCount variable should store a number 144584.
 
-const ratings = [['rating', 4.19], ['ratingsCount', 144584]];
-const [[, rating], [, ratingsCount]] = ratings;
-console.log(rating, ratingsCount);
+// const ratings = [['rating', 4.19], ['ratingsCount', 144584]];
+// const [[, rating], [, ratingsCount]] = ratings;
+// console.log(rating, ratingsCount);
 
-//Below is the ratingStars array. Destructure it into three variables called fiveStarRatings, oneStarRatings and threeStarRatings. Assign the threeStarRatings variable with a default value of 0.
+// //Below is the ratingStars array. Destructure it into three variables called fiveStarRatings, oneStarRatings and threeStarRatings. Assign the threeStarRatings variable with a default value of 0.
 
-const ratingStars = [63405, 1808];
-const [fiveStarRatings = 0, oneStarRatings = 0, threeStarRatings = 0] = ratingStars;
-console.log(fiveStarRatings, oneStarRatings, threeStarRatings);
-
-
-const users = [
-  ['id', 1],
-  ['name', 'Gerardo'],
-  ['role', 'admin']
-];
-
-const [, [, nombre]] = users;
-console.log(nombre);
+// const ratingStars = [63405, 1808];
+// const [fiveStarRatings = 0, oneStarRatings = 0, threeStarRatings = 0] = ratingStars;
+// console.log(fiveStarRatings, oneStarRatings, threeStarRatings);
 
 
-const config = [
-  ['host', 'localhost'],
-  ['port', 5432],
-  ['secure', false]
-];
-const [, [, valor]] = config;
-console.log(valor);
+// const users = [
+//   ['id', 1],
+//   ['name', 'Gerardo'],
+//   ['role', 'admin']
+// ];
+
+// const [, [, nombre]] = users;
+// console.log(nombre);
+
+
+// const config = [
+//   ['host', 'localhost'],
+//   ['port', 5432],
+//   ['secure', false]
+// ];
+// const [, [, valor]] = config;
+// console.log(valor);
+
+
+// Destructure the first book object from the books array into variables called title, author and ISBN.
+
+const { title, author, ISBN } = books[0];
+
+console.log(title, author, ISBN);
