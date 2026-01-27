@@ -61,52 +61,68 @@ const restaurant = {
 
 };
 
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via del Sole, 21',
-  mainIndex: 2,
-  starterIndex: 2,
-});
 
-// const ingredients = [prompt('Let\'s make pasta! Ingredient 1?'), prompt('Ingredient 2?'), prompt('Ingredient 3?')];
+// Use ANY data type, return ANY data type, short-circuiting
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
 
-// console.log(ingredients);
+console.log(null || 0 || '' || 'Hello' || 23 || undefined);
 
-// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
-// restaurant.orderPasta(...ingredients)
+// restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10
+console.log(guests1);
 
-const newRestaurant = { foundedIn: 1999, ...restaurant, founder: 'Guissepe' };
-console.log(newRestaurant);
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'Ristorante Roma';
-console.log(restaurantCopy);
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Via del Sole, 21',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
+
+// // const ingredients = [prompt('Let\'s make pasta! Ingredient 1?'), prompt('Ingredient 2?'), prompt('Ingredient 3?')];
+
+// // console.log(ingredients);
+
+// // restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// // restaurant.orderPasta(...ingredients)
+
+// const newRestaurant = { foundedIn: 1999, ...restaurant, founder: 'Guissepe' };
+// console.log(newRestaurant);
+
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurantCopy);
 
 
-const arr = [7, 8, 9];
-const newArray = [1, 2, 3, 4, 5, 6, ...arr];
-console.log(newArray);
+// const arr = [7, 8, 9];
+// const newArray = [1, 2, 3, 4, 5, 6, ...arr];
+// console.log(newArray);
 
-console.log(...newArray);
+// console.log(...newArray);
 
-const newRecipe = ['Diabola', ...restaurant.mainMenu];
-console.log(`${newRecipe}.`);
+// const newRecipe = ['Diabola', ...restaurant.mainMenu];
+// console.log(`${newRecipe}.`);
 
-// Copy array
+// // Copy array
 
-const copyMainMenu = [...restaurant.mainMenu];
-console.log(copyMainMenu);
+// const copyMainMenu = [...restaurant.mainMenu];
+// console.log(copyMainMenu);
 
-// Join 2 arrays
+// // Join 2 arrays
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu);
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
 
-// Iterables: arrays, strings, maps, sets. NOT objects.
-const str = 'Gerardo';
-const letters = [...str]
-console.log(letters);
-console.log(...str);
+// // Iterables: arrays, strings, maps, sets. NOT objects.
+// const str = 'Gerardo';
+// const letters = [...str]
+// console.log(letters);
+// console.log(...str);
 
 
 
@@ -453,6 +469,6 @@ const books = [
 
 // Destructure the first book object from the books array into variables called title, author and ISBN.
 
-const { title, author, ISBN } = books[0];
+// const { title, author, ISBN } = books[0];
 
-console.log(title, author, ISBN);
+// console.log(title, author, ISBN);
